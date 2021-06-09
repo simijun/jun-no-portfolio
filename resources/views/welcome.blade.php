@@ -47,8 +47,8 @@
                                             </p>
                                         </div>
                                     </div>
-                                </ul>
-                            </li>
+                                </li>
+                            </ul>
                         </div>
                     @endforeach
                 @endif

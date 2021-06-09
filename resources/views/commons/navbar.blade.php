@@ -1,4 +1,5 @@
 <header class="mb-4">
+    <div class='fixed-top'>
     <nav class="navbar navbar-expand-sm navbar-light bg-light justify-content-between">
         @if (Auth::check())
             <div class="flex-grow-1">
@@ -51,4 +52,5 @@
             </ul>
         @endif
     </nav>
+    </div>
 </header>
