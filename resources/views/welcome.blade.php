@@ -35,9 +35,9 @@
                                             
                                             <p>コメント：{{ $post->content }}</p>
                                             <p>おすすめ度：
-                                                <span class="rating">
+                                                <span class="rating rating-show">
                                                     @for ($i = 1; $i <= 5; $i++)
-                                                        @if ($i >= $post->rating) 
+                                                        @if ($i <= $post->rating) 
                                                             <span class="star_yellow">★</span>
                                                         @else 
                                                             <span class="star_gray">★</span>

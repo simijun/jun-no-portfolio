@@ -9,7 +9,7 @@
             {!! Form::model($post, ['route' => ['posts.update', $post->id], 'method' => 'put']) !!}
 
                 <div class="form-group">
-                    {!! Form::text('video_id', null, ['class'=>'video_class form-control', 'placeholder' => '動画リンク貼り付け']) !!}
+                    {!! Form::text('video_id', 'https://www.youtube.com/watch?v=' . $post->video_id, ['class'=>'video_class form-control', 'placeholder' => '動画リンク貼り付け']) !!}
                     {!! Form::text('title', null, ['class' => 'form-control', 'placeholder' => '動画タイトル']) !!}
                     {!! Form::text('content', null, ['class' => 'form-control', 'placeholder' => '動画に対するコメント']) !!}
                     <div class="rating">

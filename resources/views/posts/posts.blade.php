@@ -33,9 +33,9 @@
                                     
                                     <p>コメント：{{ $post->content }}</p>
                                     <p>おすすめ度：
-                                        <span class="rating">
+                                        <span class="rating rating-show">
                                             @for ($i = 1; $i <= 5; $i++)
-                                                @if ($i >= $post->rating) 
+                                                @if ($i <= $post->rating) 
                                                     <span class="star_yellow">★</span>
                                                 @else 
                                                     <span class="star_gray">★</span>
@@ -43,14 +43,16 @@
                                             @endfor
                                         </span>
                                     </p>
-                                    <div class="d-flex flex-row">
-                                        {{-- 投稿編集ページへのリンク --}}
-                                        {!! link_to_route('posts.edit', '編集', [$post->id], ['class' => 'btn btn-primary btn-sm'], ) !!}
-                                        {{-- 投稿削除ボタンのフォーム --}}
-                                        {!! Form::open(['route' => ['posts.destroy', $post->id], 'method' => 'delete']) !!}
-                                            {!! Form::submit('削除', ['class' => 'btn btn-danger btn-sm']) !!}
-                                        {!! Form::close() !!}
-                                    </div>
+                                    @if (Auth::check())
+                                        <div class="d-flex flex-row">
+                                            {{-- 投稿編集ページへのリンク --}}
+                                            {!! link_to_route('posts.edit', '編集', [$post->id], ['class' => 'btn btn-primary btn-sm'], ) !!}
+                                            {{-- 投稿削除ボタンのフォーム --}}
+                                            {!! Form::open(['route' => ['posts.destroy', $post->id], 'method' => 'delete']) !!}
+                                                {!! Form::submit('削除', ['class' => 'btn btn-danger btn-sm']) !!}
+                                            {!! Form::close() !!}
+                                        </div>
+                                    @endif
                                 </div>
                             </div>
                         </li>

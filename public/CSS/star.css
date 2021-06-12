@@ -3,8 +3,12 @@
  
     .rating {
       display: inline-flex;
-      flex-direction: row-reverse;
+      flex-direction: row-reverse
     }
+    
+    .rating-show {
+    flex-flow: row;
+}
  
     .hidden--visually {
         border: 0;
