@@ -93,8 +93,8 @@ class PostsController extends Controller
         $request->validate([
             'title' => 'required',
             'content' => 'required|max:255',
-            'video_id' => 'required',
-            'video_id' => 'url',
+            //YouTubeのURL以外はエラーになるバリデーション
+            'video_id' => ['required', 'url', 'regex:/(https\:\/\/www\.youtube\.com\/watch\?v=([a-zA-Z0-9]+)|https\:\/\/youtu\.be\/([a-zA-Z0-9]+))/'],
             'rating' => 'required',
         ]);
         
@@ -148,8 +148,8 @@ class PostsController extends Controller
         $request->validate([
             'title' => 'required',
             'content' => 'required|max:255',
-            'video_id' => 'required',
-            'video_id' => 'url',
+            //YouTubeのURL以外はエラーになるバリデーション
+            'video_id' => ['required', 'url', 'regex:/(https\:\/\/www\.youtube\.com\/watch\?v=([a-zA-Z0-9]+)|https\:\/\/youtu\.be\/([a-zA-Z0-9]+))/'],
             'rating' => 'required',
         ]);
         
