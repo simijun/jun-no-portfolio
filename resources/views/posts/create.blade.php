@@ -11,7 +11,7 @@
                 <div class="form-group">
                     {!! Form::text('video_id', null, ['class'=>'video_class form-control', 'placeholder' => '動画リンク貼り付け']) !!}
                     {!! Form::text('title', null, ['class' => 'form-control', 'placeholder' => '動画タイトル']) !!}
-                    {!! Form::text('content', null, ['class' => 'form-control', 'placeholder' => '動画に対するコメント']) !!}
+                    {!! Form::textarea('content', null, ['class' => 'form-control', 'rows' => '4', 'wrap' => 'hard', 'placeholder' => '動画に対するコメント']) !!}
                     <div class="rating">
                         {{Form::radio('rating', '5', false, ['class'=>'rating__input hidden--visually', 'id'=>'5-star'])}}
                         <label class="rating__label" for="5-star" title="星5つ"><span class="rating__icon" aria-hidden="true"></span><span class="hidden--visually">星5つ</span></label>

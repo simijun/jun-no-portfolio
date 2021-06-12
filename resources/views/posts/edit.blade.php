@@ -11,7 +11,7 @@
                 <div class="form-group">
                     {!! Form::text('video_id', 'https://www.youtube.com/watch?v=' . $post->video_id, ['class'=>'video_class form-control', 'placeholder' => '動画リンク貼り付け']) !!}
                     {!! Form::text('title', null, ['class' => 'form-control', 'placeholder' => '動画タイトル']) !!}
-                    {!! Form::text('content', null, ['class' => 'form-control', 'placeholder' => '動画に対するコメント']) !!}
+                    {!! Form::textarea('content', null, ['class' => 'form-control', 'rows' => '4',  'placeholder' => '動画に対するコメント']) !!}
                     <div class="rating">
                         {{Form::radio('rating', '5', false, ['class'=>'rating__input hidden--visually', 'id'=>'5-star'])}}
                         <label class="rating__label" for="5-star" title="星5つ"><span class="rating__icon" aria-hidden="true"></span><span class="hidden--visually">星5つ</span></label>
@@ -25,9 +25,9 @@
                         <label class="rating__label" for="1-star" title="星1つ"><span class="rating__icon" aria-hidden="true"></span><span class="hidden--visually">星1つ</span></label>
                     </div>
                 </div>
-
-                {!! Form::submit('編集', ['class' => 'btn btn-primary']) !!}
-
+                @if (Auth::check())
+                    {!! Form::submit('編集', ['class' => 'btn btn-primary']) !!}
+                @endif
             {!! Form::close() !!}
         </div>
     </div>

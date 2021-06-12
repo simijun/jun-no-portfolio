@@ -122,10 +122,9 @@ class PostsController extends Controller
             preg_match('/\/youtu\.be\/([a-zA-Z0-9]+)/',$post->video_id,$match);    
         }
         
-        
-        $post->video_id = $match[1];
-        $post->save();
-        
+            $post->video_id = $match[1];
+            $post->save();
+
 
         // トップページへリダイレクトさせる
         return redirect('/');
@@ -179,9 +178,11 @@ class PostsController extends Controller
         }
         
         
-        
-        $post->video_id = $match[1];
-        $post->save();
+        //認証済みユーザ（閲覧者）がその投稿の所有者である場合は、投稿を編集
+        if (\Auth::id() === $post->user_id) {
+            $post->video_id = $match[1];
+            $post->save();
+        }
         
         
         // トップページへリダイレクトさせる
