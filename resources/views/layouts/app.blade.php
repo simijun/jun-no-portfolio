@@ -11,7 +11,7 @@
     </head>
     
     {{-- nav fixed-topで固定 → navで隠れる分を考慮してbodyの上にpaddingで余白つくる --}}
-    <body style="padding-top: 5rem">
+    <body style="padding-top: 6rem">
 
         {{-- ナビゲーションバー --}}
         @include('commons.navbar')
