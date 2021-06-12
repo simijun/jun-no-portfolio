@@ -28,8 +28,8 @@
                                 {{-- 投稿ユーザーの投稿一覧ページへのリンク --}}
                                 {!! link_to_route('users.show', $post->user->name, ['user' => $post->user->id], ) !!}
                                 
-                                <p>コメント：{{ $post->content }}</p>
-                                <p>おすすめ度：
+                                <p>{!! nl2br($post->content) !!}</p>
+                                <p>おすすめ度
                                     <span class="rating rating-show">
                                         @for ($i = 1; $i <= 5; $i++)
                                             @if ($i <= $post->rating) 
