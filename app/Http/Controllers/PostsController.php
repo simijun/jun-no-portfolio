@@ -17,7 +17,7 @@ class PostsController extends Controller
             $user = \Auth::user();
 
             // 所有者関係なく、全ユーザのPostから取得して作成日時の降順で取得
-            $posts = Post::orderBy('created_at', 'desc')->get();
+            $posts = Post::orderBy('created_at', 'desc')->take(10)->get();
             $data = [
                 'user' => $user,
                 'posts' => $posts,

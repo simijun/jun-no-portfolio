@@ -2,18 +2,22 @@
 
 @section('content')
 
+    {{-- 検索キーワードが含まれる投稿があった場合 --}} 
+    @if (count($posts) > 0)
     <div class="text-center">
         <h2>検索結果一覧</h2>
     </div>
-    
-      
-        {{-- 検索キーワードが含まれる投稿があった場合 --}} 
-        @if (count($posts) > 0)
-            @foreach ($posts as $post)
-                <div class="card-body">
+        @foreach ($posts as $post)
+            <div class="card-body">
+                <div class="border-bottom">
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">
-                            <p>動画タイトル：<a href="https://youtu.be/{{ $post->video_id }}">{{ $post->title }}</a></p>
+                            {{-- 投稿の所有者のメールアドレスをもとにGravatarを取得して表示 --}}
+                            <img class="mr-2 rounded" src="{{ Gravatar::get($post->user->email, ['size' => 30]) }}" alt="">
+                            {{-- 投稿ユーザーの投稿一覧ページへのリンク --}}
+                            {!! link_to_route('users.show', $post->user->name, ['user' => $post->user->id], ) !!}
+                            {{-- 動画タイトルをYouTubeへのリンクにする --}}
+                            <p class="mt-2"><a href="https://youtu.be/{{ $post->video_id }}">{{ $post->title }}</a></p>
                             <div class="row">
                                 <div class="youtube_area col-12 col-lg-5">
                                     {{-- iframeタグで動画プレイヤーを埋め込む --}}
@@ -22,12 +26,7 @@
                                     frameborder="0"></iframe> 
                                 </div> 
                                 <div class="col-12 offset-lg-1 col-lg-6">
-                                    {{-- 投稿の所有者のメールアドレスをもとにGravatarを取得して表示 --}}
-                                    <img class="mr-2 rounded" src="{{ Gravatar::get($post->user->email, ['size' => 30]) }}" alt="">
-                                    {{-- 投稿ユーザーの投稿一覧ページへのリンク --}}
-                                    {!! link_to_route('users.show', $post->user->name, ['user' => $post->user->id], ) !!}
-                                    
-                                    <p>{!! nl2br(e($post->content)) !!}</p>
+                                    <p class="mt-2">{!! nl2br(e($post->content)) !!}</p>
                                     <p>おすすめ度
                                         <span class="rating rating-show">
                                             @for ($i = 1; $i <= 5; $i++)
@@ -41,14 +40,17 @@
                                     </p>
                                 </div>
                             </div>
-                        </ul>
-                    </li>
+                        </li>
+                    </ul>
                 </div>
-            @endforeach
-                {{-- ページネーションのリンク --}}
-                {{ $posts->links() }}
-        {{-- 検索キーワードを含む投稿がなかった場合 --}}    
-        @else
-            <p>該当する投稿はありません</p>
-        @endif
+            </div>
+        @endforeach
+        {{-- ページネーションのリンク --}}
+        {{ $posts->links() }}
+    {{-- 検索キーワードを含む投稿がなかった場合 --}}    
+    @else
+        <div class="text-center">
+            <h1>該当する投稿はありません</h1>
+        </div>
+    @endif
 @endsection

@@ -33,8 +33,7 @@
  
     .rating__icon::before {
       content: "★";
-      font-size: 4rem;
-      padding: 1rem;
+      font-size: 3rem;
     }
  
     .rating__input:hover ~ .rating__label {

@@ -2,10 +2,13 @@
 
 @section('content')
 
-    <h1>投稿内容を編集する</h1>
+    
+    <div class="text-center">
+        <h1>投稿内容を編集する</h1>
+    </div>
 
     <div class="row">
-        <div class="col-6">
+        <div class="col-sm-6 offset-sm-3">
             {!! Form::model($post, ['route' => ['posts.update', $post->id], 'method' => 'put']) !!}
 
                 <div class="form-group">

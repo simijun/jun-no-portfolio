@@ -4,20 +4,19 @@
 
     <div class="d-flex justify-content-center">
         {{-- ログイン中ユーザのメールアドレスをもとにGravatarを取得して表示 --}}
-        <img class="mr-2 rounded" src="{{ Gravatar::get(Auth::user()->email, ['size' => 30]) }}" alt="">
-        {{ $user->name }}さんの投稿一覧
+        <img class="mr-2 rounded" src="{{ Gravatar::get(Auth::user()->email, ['size' => 40]) }}" alt="">
+        <h3>{{ $user->name }}さんの投稿一覧</h3>
     </div>
-
-    
 
    {{-- 自分の投稿内容を新しい順に表示 --}}
    @if (count($posts) > 0)
         @foreach ($posts as $post)
-            @if (count($posts) > 0)
-                <div class="card-body">
+            <div class="card-body">
+                <div class="border-bottom">
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">
-                            <p>動画タイトル：<a href="https://youtu.be/{{ $post->video_id }}">{{ $post->title }}</a></p>
+                            {{-- 動画タイトルをYouTubeへのリンクにする --}}
+                            <p class="mt-2"><a href="https://youtu.be/{{ $post->video_id }}">{{ $post->title }}</a></p>
                             <div class="row">
                                 <div class="youtube_area col-12 col-lg-5">
                                     {{-- iframeタグで動画プレイヤーを埋め込む --}}
@@ -26,12 +25,7 @@
                                     frameborder="0"></iframe> 
                                 </div> 
                                 <div class="col-12 offset-lg-1 col-lg-6">
-                                    {{-- 投稿の所有者のメールアドレスをもとにGravatarを取得して表示 --}}
-                                    <img class="mr-2 rounded" src="{{ Gravatar::get($post->user->email, ['size' => 30]) }}" alt="">
-                                    {{-- 投稿ユーザーの投稿一覧ページへのリンク --}}
-                                    {!! link_to_route('users.show', $post->user->name, ['user' => $post->user->id], ) !!}
-                                    
-                                    <p>{!! nl2br(e($post->content)) !!}</p>
+                                    <p class="mt-2">{!! nl2br(e($post->content)) !!}</p>
                                     <p>おすすめ度
                                         <span class="rating rating-show">
                                             @for ($i = 1; $i <= 5; $i++)
@@ -56,10 +50,9 @@
                                 </div>
                             </div>
                         </li>
-                    </lul
+                    </ul>
                 </div>
-            @endif
-            {!! Form::close() !!}
+            </div>
         @endforeach
         {{-- ページネーションのリンク --}}
         {{ $posts->links() }}
