@@ -43,7 +43,7 @@ class LoginController extends Controller
     {
         $name = 'guest';
         $email = 'guest@guest.com';
-        $password = 'guest123';
+        $password = 'guest1234';
     
         if (Auth::attempt(['name' => $name, 'email' => $email, 'password' => $password])) {
             return redirect('/');
