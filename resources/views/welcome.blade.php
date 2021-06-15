@@ -63,6 +63,8 @@
             {!! link_to_route('signup.get', 'ユーザ登録', [], ['class' => 'btn btn-lg btn-primary']) !!}
             {{-- ログインページへのリンク --}}
             {!! link_to_route('login', 'ログイン',  [], ['class' => 'btn btn-lg btn-primary']) !!}
+            {{-- ゲストログインページへのリンク --}}
+            {!! link_to_route('login.guest', 'ゲストログイン',  [], ['class' => 'btn btn-lg btn-primary']) !!}
         </div>
     @endif
     
