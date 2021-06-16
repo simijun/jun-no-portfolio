@@ -44,10 +44,6 @@ class PostsController extends Controller
                 ->orWhere('rating', 'LIKE', "%{$keyword}%");
             });
         }
-        //☆の数で検索
-        if (!empty($rating)) {
-            $query->where('rating', '>=', $rating);
-        }
         
         //投稿を1ページにつき10個表示させる
         $posts = $query->paginate(10);
