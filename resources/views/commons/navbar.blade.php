@@ -3,7 +3,7 @@
         <nav class="navbar navbar-expand-sm navbar-light bg-light justify-content-between">
             @if (Auth::check())
                 <div class="flex-grow-1">
-                    <a class="navbar-brand" href="/">おすすめのYouTube動画</a>
+                    <a class="navbar-brand" href="/">Share YouTube</a>
                 </div>
                 <div class="flex-grow-1">
                     {!! Form::open(['route' => 'posts.search', 'method' => 'get']) !!}

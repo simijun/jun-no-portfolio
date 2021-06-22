@@ -90,7 +90,7 @@ class PostsController extends Controller
             'title' => 'required',
             'content' => 'required|max:255',
             //YouTubeのURL以外はエラーになるバリデーション
-            'video_id' => ['required', 'url', 'regex:/(https\:\/\/www\.youtube\.com\/watch\?v=([a-zA-Z0-9]+)|https\:\/\/youtu\.be\/([a-zA-Z0-9]+))/'],
+            'video_id' => ['required', 'url', 'regex:/(https\:\/\/www\.youtube\.com\/watch\?v=([a-zA-Z_0-9\-]+)|https\:\/\/youtu\.be\/([a-zA-Z_0-9\-]+))/'],
             'rating' => 'required',
         ]);
         
@@ -110,12 +110,12 @@ class PostsController extends Controller
         
         if ($pos === false) {
             //WebでYouTubeを開いた時のURLを取得(非短縮系)
-            preg_match('/\?v=([a-zA-Z0-9]+)/',$post->video_id,$match);
+            preg_match('/\?v=([a-zA-Z_0-9\-]+)/',$post->video_id,$match);
             
         }
         else {
             //共有ボタンでリンクコピペする際の短縮形URL取得(youtu.be/ 以下の半角英数字を取得する正規表現)
-            preg_match('/\/youtu\.be\/([a-zA-Z0-9]+)/',$post->video_id,$match);    
+            preg_match('/\/youtu\.be\/([a-zA-Z_0-9\-]+)/',$post->video_id,$match);    
         }
         
             $post->video_id = $match[1];
@@ -145,7 +145,7 @@ class PostsController extends Controller
             'title' => 'required',
             'content' => 'required|max:255',
             //YouTubeのURL以外はエラーになるバリデーション
-            'video_id' => ['required', 'url', 'regex:/(https\:\/\/www\.youtube\.com\/watch\?v=([a-zA-Z0-9]+)|https\:\/\/youtu\.be\/([a-zA-Z0-9]+))/'],
+            'video_id' => ['required', 'url', 'regex:/(https\:\/\/www\.youtube\.com\/watch\?v=([a-zA-Z_0-9\-]+)|https\:\/\/youtu\.be\/([a-zA-Z_0-9\-]+))/'],
             'rating' => 'required',
         ]);
         
@@ -165,12 +165,12 @@ class PostsController extends Controller
         
         if ($pos === false) {
             //WebでYouTubeを開いた時のURLを取得(非短縮系)
-            preg_match('/\?v=([a-zA-Z0-9]+)/',$post->video_id,$match);
+            preg_match('/\?v=([a-zA-Z_0-9\-]+)/',$post->video_id,$match);
             
         }
         else {
             //共有ボタンでコピペしたときの短縮形URL取得(youtu.be/ 以下の半角英数字を取得する正規表現)
-            preg_match('/\/youtu\.be\/([a-zA-Z0-9]+)/',$post->video_id,$match);    
+            preg_match('/\/youtu\.be\/([a-zA-Z_0-9\-]+)/',$post->video_id,$match);    
         }
         
         

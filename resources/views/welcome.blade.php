@@ -58,7 +58,7 @@
     @else
         {{-- 未ログインの時の表示（welcomeページ） --}}
         <div class="text-center">    
-            <h1>おすすめのYouTube動画</h1>
+            <h1>Share YouTube</h1>
             {{-- ユーザ登録ページへのリンク --}}
             {!! link_to_route('signup.get', 'ユーザ登録', [], ['class' => 'btn btn-lg btn-primary']) !!}
             {{-- ログインページへのリンク --}}
