@@ -50,10 +50,62 @@ class User extends Authenticatable
         return $this->hasMany(Post::class);
     }
     
-    //このユーザに関係するモデルの件数をロードする。
+    //このユーザがフォロー中のユーザ（ Userモデルとの関係を定義）
+    public function followings()
+    {
+        return $this->belongsToMany(User::class, 'user_follow', 'user_id', 'follow_id')->withTimestamps();
+    }
+    
+    //このユーザをフォロー中のユーザ（ Userモデルとの関係を定義）
+    public function followers()
+    {
+        return $this->belongsToMany(User::class, 'user_follow', 'follow_id', 'user_id')->withTimestamps();
+    }
+    
+    //$userIDで指定されたユーザをフォローする
+    public function follow($userId)
+    {
+        //フォロー済みかどうか
+        $exist = $this->is_following($userId);
+        //自分自身かどうか
+        $its_me = $this->id == $userId;
+        
+        if ($exist || $its_me) {
+            return false;
+        }
+        else {
+            $this->followings()->attach($userId);
+            return true;
+        }
+    }
+    
+    //$userIdで指定されたユーザのフォローを外す
+    public function unfollow($userId)
+    {
+        //フォロー済みかどうか
+        $exist = $this->is_following($userId);
+        //自分自身かどうか
+        $its_me = $this->id == $userId;
+            
+        if ($exist && !$its_me) {
+            $this->followings()->detach($userId);
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+    
+    //フォロー中のユーザの中に$userIdのものが存在するかどうか
+    public function is_following($userId)
+    {
+        return $this->followings()->where('follow_id', $userId)->exists();
+    }
+
+    //このユーザに関係するモデルの件数をロード
     public function loadRelationshipCounts()
     {
-        $this->loadCount('posts');
+        $this->loadCount('posts', 'followings', 'followers');
     }
     
     //リレーション先のPostも論理削除する

@@ -27,7 +27,7 @@ class PostsController extends Controller
         // Welcomeビューでそれらを表示
         return view('welcome', $data);
     }
-    
+
     //検索
     public function search(Request $request) {
         $keyword = $request->input('keyword');

@@ -25,8 +25,14 @@ Route::get('logout', 'Auth\LoginController@logout')->name('logout.get');
 Route::get('lopgin/guest', 'Auth\LoginController@guestLogin')->name('login.guest');
 
 
-//投稿
 Route::group(['middleware' => ['auth']], function() {
+    //フォロー機能
+    Route::group(['prefix' => 'users/{id}'], function () {
+        Route::post('follow', 'UserFollowController@store')->name('user.follow');
+        Route::delete('unfollow', 'UserFollowController@destroy')->name('user.unfollow');
+        Route::get('followings', 'UsersController@followings')->name('users.followings');
+        Route::get('followers', 'UsersController@followers')->name('users.followers');
+    });
     //退会機能
     Route::resource('users','UsersController',['only'=>['show','destroy']]); //destroyを追記
     //確認画面に飛ばす
