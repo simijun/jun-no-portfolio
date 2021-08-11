@@ -1,78 +1,64 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+## About Share Youtube
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+| ユーザ詳細ページ | 投稿詳細ページ |
+| ---- | ---- |
+| <a href="https://gyazo.com/d44b89ed52c1a46f4cea8df8e0444132"><img src="https://i.gyazo.com/d44b89ed52c1a46f4cea8df8e0444132.png" alt="Image from Gyazo" width="1436"/></a> | <a href="https://gyazo.com/a39ddc058b5b2e1260452776d14dbd16"><img src="https://i.gyazo.com/a39ddc058b5b2e1260452776d14dbd16.png" alt="Image from Gyazo" width="1439"/></a> |
 
-## About Laravel
+あなたのおすすめのYouTube動画を投稿することができます。  
+他のユーザーの投稿や新着投稿から、あなたの知らないYouTube動画に出会いましょう。  
+[Heroku](https://jun-videos.herokuapp.com/)で公開しています。
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## 使用技術
 
-## Learning Laravel
+- **言語→HTML 5/CSS 3/PHP 7.3.23**
+- **フレームワーク→Laravel Framework 6.20.24/bootstrap 4.2.1**
+- **開発環境→Cloud9**
+- **DB→MySQL**
+- **API→YouTube API**
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
-## Laravel Sponsors
+## 機能一覧
+- **ユーザ登録、ログイン、退会機能**
+- **投稿機能**
+  * 動画リンク貼り付け
+  * コメント投稿
+  * ☆5段階評価
+  * 投稿削除
+  * 投稿編集
+- **検索機能**
+- **新着投稿表示機能**
+- **ユーザ詳細機能**
+- **フォロー機能**
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[British Software Development](https://www.britishsoftware.co)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- [UserInsights](https://userinsights.com)
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
-- [User10](https://user10.com)
-- [Soumettre.fr](https://soumettre.fr/)
-- [CodeBrisk](https://codebrisk.com)
-- [1Forge](https://1forge.com)
-- [TECPRESSO](https://tecpresso.co.jp/)
-- [Runtime Converter](http://runtimeconverter.com/)
-- [WebL'Agence](https://weblagence.com/)
-- [Invoice Ninja](https://www.invoiceninja.com)
-- [iMi digital](https://www.imi-digital.de/)
-- [Earthlink](https://www.earthlink.ro/)
-- [Steadfast Collective](https://steadfastcollective.com/)
-- [We Are The Robots Inc.](https://watr.mx/)
-- [Understand.io](https://www.understand.io/)
-- [Abdel Elrafa](https://abdelelrafa.com)
-- [Hyper Host](https://hyper.host)
-- [Appoly](https://www.appoly.co.uk)
-- [OP.GG](https://op.gg)
 
-## Contributing
+## 使い方
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+**トップ画面**
 
-## Code of Conduct
+すべてのユーザーの投稿から新着順に10件表示させる。  
+ユーザー名をクリックするとユーザ詳細情報を確認できる。
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+**投稿フォーム**
 
-## Security Vulnerabilities
+YouTube動画のURLを張り付ければ埋め込み型の動画プレーヤーとして投稿できる。  
+Web版、アプリ版(共有ボタンからコピーできるリンク)どちらからでもURLを取得できる。  
+YouTube以外のURLは入力エラーになる。  
+☆5段階で動画のおすすめ度を評価できる。
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+**投稿一覧機能**
 
-## License
+自身(ログイン中ユーザー)の過去の投稿一覧を表示する。  
+投稿内容の編集、削除が可能。
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+**検索機能**
+
+検索キーワードを含む投稿内容を一覧で表示する。
+
+**ユーザ詳細機能**
+
+ユーザー名をクリックするとそのユーザーの詳細ページへ移動する。  
+ここではユーザの投稿一覧の確認の他、フォロー、フォロー解除が可能。
