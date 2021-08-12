@@ -11,19 +11,20 @@ class CreateUserFollowTable extends Migration
      *
      * @return void
      */
-    public function up()
+ public function up()
     {
         Schema::create('user_follow', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('follow_id');
             $table->timestamps();
-            
+
+            //外部キー制約
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('follow_id')->references('id')->on('users')->onDelete('cascade');
-            //一度保存したフォロー関係を何度も保存しないように
-            $table->unique(['user_id,', 'follow_id']);
-            
+
+            //user_idとfollow_idの組み合わせの重複を許さない
+            $table->unique(['user_id', 'follow_id']);
         });
     }
     
@@ -38,4 +39,7 @@ class CreateUserFollowTable extends Migration
     {
         Schema::dropIfExists('user_follow');
     }
+
 }
+
+
