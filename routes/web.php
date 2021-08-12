@@ -33,7 +33,7 @@ Route::group(['middleware' => ['auth']], function() {
         Route::get('followings', 'UsersController@followings')->name('users.followings');
         Route::get('followers', 'UsersController@followers')->name('users.followers');
     });
-    //退会機能
+    //ユーザ名からユーザ詳細ページへの遷移&退会機能
     Route::resource('users','UsersController',['only'=>['show','destroy']]); //destroyを追記
     //確認画面に飛ばす
     Route::get('users','UsersController@delete_confirm')->name('users.delete_confirm');
@@ -42,7 +42,4 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('posts', 'PostsController', ['except' => ['show']]);
     //検索ボタンを押すとPostsControllerのsearchメソッドを実行
     Route::get('search', 'PostsController@search')->name('posts.search');
-    //新着投稿と検索結果の投稿一覧のGravatarからそのユーザの投稿一覧ページへ移動
-    Route::resource('users', 'UsersController', ['only' => 'show']);
-    Route::get('videos', 'VideosController@youtube');
 });
